@@ -1,6 +1,5 @@
 package stepdefinitions;
 
-import helper.BaseTest;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
@@ -8,9 +7,7 @@ import io.restassured.response.Response;
 import org.apache.http.HttpStatus;
 import org.junit.Assert;
 
-import static io.restassured.RestAssured.given;
-
-public class HealthCheck extends BaseTest {
+public class HealthCheck {
 
     Response response;
     @When("I perform a GET request by ping end-point")
