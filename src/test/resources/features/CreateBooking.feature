@@ -3,7 +3,6 @@ Feature: Creates a new booking in the API
   I want to create a new booking
   So that I can make a reservation
 
-
   Scenario: Create a new booking
     Given I have a valid booking payload with the following details
     When I perform a POST request

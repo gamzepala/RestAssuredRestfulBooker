@@ -56,14 +56,54 @@ public class DeleteBooking {
 		// Verify DELETE
 		Assert.assertEquals(response.getStatusCode(), HttpStatus.SC_CREATED);
 	}
+
 	@Then("the DELETE response body should be correct")
 	public void the_delete_response_body_should_be_correct() {
-		response =  bookingAPI.getBooking(bookingId);
+		response =  bookingAPI.getBookingById(bookingId);
 
 		Assert.assertEquals(response.getStatusCode(), HttpStatus.SC_NOT_FOUND);
 		Assert.assertEquals(response.getBody().asString(), "Not Found");
 	}
 
+	@When("I perform a DELETE request with invalid {string} and {string}")
+	public void i_perform_a_delete_request_with_invalid_and(String user, String password) {
+		String token = auth.createToken(new AuthLoginRequests(user, password));
+		// Delete booking
+		response = bookingAPI.deleteBooking(bookingId, token);
+	}
+
+	@Then("the DELETE response code by invalid credentials should be verified")
+	public void the_delete_response_code_by_invalid_credentials_should_be_verified() {
+		// Verify not deleted
+		Assert.assertEquals(response.getStatusCode(), HttpStatus.SC_FORBIDDEN);
+		Assert.assertEquals(response.getBody().asString(), "Forbidden");
+	}
+
+	@When("I perform a DELETE request with invalid {string}")
+	public void i_perform_a_delete_request_with_invalid(String token) {
+		// Delete booking
+		response = bookingAPI.deleteBooking(bookingId, token);
+	}
+
+	@Then("the DELETE response code by invalid token should be verified")
+	public void the_delete_response_code_by_invalid_token_should_be_verified() {
+		// Verify not deleted
+		Assert.assertEquals(response.getStatusCode(), HttpStatus.SC_FORBIDDEN);
+		Assert.assertEquals(response.getBody().asString(), "Forbidden");
+	}
+
+	@Given("I perform a GET request first bookingid in the list")
+	public void i_perform_a_get_request_first_bookingid_in_the_list() {
+		response = bookingAPI.getBookingIds();
+		int firstBookingid = response.jsonPath().getInt("bookingid[0]");
+	}
+
+	@Then("the DELETE response code by non existing booking should be verified")
+	public void the_delete_response_code_by_non_existing_booking_should_be_verified() {
+		// Verify not deleted
+		Assert.assertEquals(response.getStatusCode(), HttpStatus.SC_METHOD_NOT_ALLOWED);
+		Assert.assertEquals(response.getBody().asString(), "Method Not Allowed");
+	}
 
 
 }
