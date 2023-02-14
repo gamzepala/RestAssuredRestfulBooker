@@ -39,6 +39,7 @@ jobs:
 
       - name: Upload Full Test Report
         if: always()
+        id: single_page_report
         uses: actions/upload-artifact@v3
         with:
           name: Full Report
