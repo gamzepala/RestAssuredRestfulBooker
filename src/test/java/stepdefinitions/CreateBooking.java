@@ -25,6 +25,7 @@ public class CreateBooking {
 	public void i_have_a_valid_booking_payload_with_the_following_details() throws IOException {
 
 		booking = new Booking(requestPayload);
+		System.out.println(requestPayload);
 	}
 	@When("I perform a POST request")
 	public void i_perform_a_post_request() {

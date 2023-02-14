@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * This class provides check-in and check-out date
+ * for create booking
+ */
 public class Bookingdates {
 
 	private String checkin;

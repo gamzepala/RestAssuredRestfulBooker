@@ -20,6 +20,7 @@ public class Config {
 
     @After
     public void tearDown() {
+
         System.out.println("Test finished");
     }
 }

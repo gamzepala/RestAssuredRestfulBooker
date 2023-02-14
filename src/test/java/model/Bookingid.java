@@ -1,5 +1,9 @@
 package model;
 
+/**
+ * * This class provides the response
+ * value of the created bookingin
+ */
 public class Bookingid {
 
 	private int bookingid;

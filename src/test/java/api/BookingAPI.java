@@ -7,7 +7,8 @@ import model.Booking;
 import org.json.JSONObject;
 
 /**
- * This class mainly contains the steps that uses HTTP requests in order to interact with endpoints
+ * This class mainly contains the steps that uses
+ * HTTP requests in order to interact with endpoints
  */
 public class BookingAPI {
 

@@ -5,8 +5,8 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * This class mainly contains the steps that uses HTTP requests in order to interact with endpoints
- *
+ * This class mainly contains the steps that
+ * uses to create a booking
  */
 
 public class Booking {

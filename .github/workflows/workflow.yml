@@ -18,12 +18,11 @@ jobs:
           java-version: '17'
           check-latest: true
 
-      # Setup maven because the test project is a maven project
-      - name: Setup Maven
+      - name: Set up Maven
         id: maven
-        uses: stCarolas/setup-maven@v4.2
+        uses: stCarolas/setup-maven@v4.5
         with:
-          maven-version: '3.8.6'
+          maven-version: 3.8.2
 
       # Cache the maven packages to make the run fast
       - name: Cache the Maven packages
@@ -43,7 +42,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Full Report
-          path: ${{ github.workspace }}/target/karate-reports
+          path: ${{ github.workspace }}/test-output/SparkReport
 
 
 

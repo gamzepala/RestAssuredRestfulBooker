@@ -2,6 +2,10 @@ package model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+/**
+ * This class provides Credentials grant type
+ * for Access Token
+ */
 public class AuthLoginRequests {
 
     @JsonProperty
