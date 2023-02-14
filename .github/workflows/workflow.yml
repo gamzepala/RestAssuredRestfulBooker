@@ -44,6 +44,21 @@ jobs:
           name: Full Report
           path: ${{ github.workspace }}/test-output/SparkReport
 
+Report:
+  if: always()
+  needs: Test
+  runs-on: ubuntu-22.04
+  steps:
+    - name: Download Artifact
+      uses: actions/download-artifact@v3
+      with:
+        name: single_page_report
+      continue-on-error: true
+
+    - name: Test artifact download
+      run: ls -R
+      continue-on-error: true
+
 
 
 
