@@ -52,7 +52,7 @@ After running the tests, it will be provided you a report link automatically. Ju
 ## 5. How to run the test in a CI/CD
 Follow the link below to see the  workflow. **IMPORTANT NOTE:** After test execution done, please go to `Artifacts` and download `Full Report`
 to comprehensive report with cool graphs. Then find `Spark.html` file and just click!
-<a href="https://github.com/gamzepala/RestAssuredRestfulBooker/actions/runs/4177750258" target="_blank">Sample Workflow Run</a>
+<a href="https://github.com/gamzepala/RestAssuredRestfulBooker/actions/runs/4177896378" target="_blank">Sample Workflow Run</a>
 
 `See Sample Report`
 
