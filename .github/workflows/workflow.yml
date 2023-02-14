@@ -37,11 +37,6 @@ jobs:
         id: runtest
         run: mvn test
 
-  Report:
-    if: always()
-    needs: Test
-    runs-on: ubuntu-22.04
-    steps:
       - name: Upload Full Test Report
         if: always()
         id: single_page_report
@@ -49,6 +44,9 @@ jobs:
         with:
           name: Full Report
           path: ${{ github.workspace }}/test-output/SparkReport
+
+
+
 
 
 
