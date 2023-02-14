@@ -35,7 +35,4 @@ public class Bookingid {
 	public void setBooking(Booking booking) {
 		this.booking = booking;
 	}
-	
-	
-	
 }

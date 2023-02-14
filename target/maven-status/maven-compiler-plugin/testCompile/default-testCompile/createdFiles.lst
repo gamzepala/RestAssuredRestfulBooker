@@ -1,8 +1,0 @@
-stepdefinitions\CreateBooking.class
-stepdefinitions\HealthCheck.class
-stepdefinitions\GetBookingById.class
-payload\AuthLoginRequests.class
-stepdefinitions\Config.class
-stepdefinitions\DeleteBooking.class
-TestRunner.class
-api\AuthAPI.class

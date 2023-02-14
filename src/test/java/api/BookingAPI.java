@@ -6,53 +6,12 @@ import io.restassured.response.Response;
 import model.Booking;
 import org.json.JSONObject;
 
-import java.io.File;
-
+/**
+ * This class mainly contains the steps that uses HTTP requests in order to interact with endpoints
+ */
 public class BookingAPI {
 
     private static final String BOOKING =  "/booking";
-
-    File jsonDataInFile = new File("src/test/resources/Payloads/AuthPayload.json");
-
-
-
-//    public void getAllIssues(String accessToken) {
-//        SerenityRest.given().auth().preemptive().oauth2(accessToken)
-//                .contentType(ContentType.JSON)
-//                .when()
-//                .log().all()
-//                .get(ALL_ISSUES);
-//    }
-//
-//    public void getSingleIssueByProject(Integer issueId, Integer projectId, String accessToken) {
-//        SerenityRest.given().auth().preemptive().oauth2(accessToken)
-//                .contentType(ContentType.JSON)
-//                .when()
-//                .pathParam("issue", issueId)
-//                .pathParam("projects", projectId)
-//                .log().all()
-//                .get(SINGLE_ISSUE_BY_PROJECT);
-//    }
-//
-//    public void getSingleIssueByQueryParameter(Integer projectId, String parameterName, String parameterValue, String accessToken) {
-//        SerenityRest.given().auth().preemptive().oauth2(accessToken)
-//                .contentType(ContentType.JSON)
-//                .when()
-//                .pathParam("projects", projectId)
-//                .queryParam(parameterName, parameterValue)
-//                .log().all()
-//                .get(SINGLE_ISSUE_BY_QUERY_PARAMETER);
-//    }
-//
-//    public void getInvalidIssueRequestByProject(String issueId, Integer projectId, String accessToken) {
-//        SerenityRest.given().auth().preemptive().oauth2(accessToken)
-//                .contentType(ContentType.JSON)
-//                .when()
-//                .pathParam("issue", issueId)
-//                .pathParam("projects", projectId)
-//                .log().all()
-//                .get(SINGLE_ISSUE_BY_PROJECT);
-//    }
 
     public Response createBooking(Booking booking) {
         return RestAssured
@@ -96,13 +55,22 @@ public class BookingAPI {
 
     }
 
-    public Response updateBooking(Integer bookingId, String token, JSONObject body) {
+    public Response updateBooking(Integer bookingId, String token, Booking booking) {
         return RestAssured
                 .given()
                 .log().all()
                 .contentType(ContentType.JSON)
                 .cookie("token", token)
-                .body(body.toString())
+                .body(booking)
                 .put(BOOKING + "/" + bookingId);
+    }
+
+    public Response sendInvalidBookingRequest(String booking) {
+        return RestAssured
+                .given()
+                .log().all()
+                .contentType(ContentType.JSON)
+                .body(booking)
+                .post(BOOKING);
     }
 }

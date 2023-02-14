@@ -1,5 +1,14 @@
 package model;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import java.io.File;
+import java.io.IOException;
+
+/**
+ * This class mainly contains the steps that uses HTTP requests in order to interact with endpoints
+ *
+ */
+
 public class Booking {
 
 	private String firstname;
@@ -20,9 +29,22 @@ public class Booking {
 		this.additionalneeds = additionalneeds;
 	}
 
+	public Booking(File jsonFile) throws IOException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		Booking booking = objectMapper.readValue(jsonFile, Booking.class);
+
+		this.firstname = booking.firstname;
+		this.lastname = booking.lastname;
+		this.totalprice = booking.totalprice;
+		this.depositpaid = booking.depositpaid;
+		this.bookingdates = booking.bookingdates;
+		this.additionalneeds = booking.additionalneeds;
+	}
+
 	public Booking() {
 	
 	}
+
 
 	@Override
 	public String toString() {

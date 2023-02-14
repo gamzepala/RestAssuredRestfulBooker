@@ -1,0 +1,11 @@
+{
+  "firstname" : "Payment",
+  "lastname" : "Credit",
+  "totalprice" : 900,
+  "depositpaid" : false ,
+  "bookingdates" : {
+    "checkin" : "2022-12-20",
+    "checkout" : "2022-12-18"
+  },
+  "additionalneeds" : "Test"
+}

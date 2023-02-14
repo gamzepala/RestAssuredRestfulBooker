@@ -1,0 +1,56 @@
+name: Push Run
+on: [push]
+
+# Job lists of the workflow
+# This job requires the OS to be run as follows
+# It also starts to install JDK before tests
+
+jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 17
+        id: jdk
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+          check-latest: true
+
+      # Setup maven because the test project is a maven project
+      - name: Setup Maven
+        id: maven
+        uses: stCarolas/setup-maven@v4.2
+        with:
+          maven-version: '3.8.6'
+
+      # Cache the maven packages to make the run fast
+      - name: Cache the Maven packages
+        id: cache_maven
+        uses: actions/cache@v1
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+
+      - name: Run Tests
+        id: runtest
+        env: # lookup key as an environment variable
+#          CLIENT_ID: ${{ secrets.CLIENT_ID }}
+#          CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
+#          GITLAB_PASSWORD: ${{ secrets.GITLAB_PASSWORD }}
+#          GITLAB_USERNAME: ${{ secrets.GITLAB_USERNAME }}
+        #mvn install -e --file pom.xml
+        run: mvn test
+
+      - name: Upload Full Test Report
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: Full Report
+          path: ${{ github.workspace }}/target/karate-reports
+
+
+
+

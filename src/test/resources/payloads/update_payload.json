@@ -1,0 +1,11 @@
+{
+  "firstname" : "Solution",
+  "lastname" : "Account",
+  "totalprice" : 300,
+  "depositpaid" : true ,
+  "bookingdates" : {
+    "checkin" : "2023-01-01",
+    "checkout" : "2023-01-12"
+  },
+  "additionalneeds" : "Future"
+}
